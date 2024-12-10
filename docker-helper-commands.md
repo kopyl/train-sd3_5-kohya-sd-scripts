@@ -73,17 +73,3 @@ docker logs train-sd3_5-kohya-sd-scripts -f
 
 Each 10 epochs there are going to be generated the images from your prompts inside `/output/sample` directory (which you mount to `./output/sample` on your host with the `docker run` command above).
 When the training is finished, you get the model name `finetuned-model.safetensors` inside `/output` directory. For more info on how to generate images with the train models, read [But how am I supposed to use that training model in Diffusers?](https://github.com/kopyl/sd3_5-training-docker-kohya/blob/main/README.md#but-how-am-i-supposed-to-use-that-training-model-in-diffusers) section.
-
-docker run \
- --name train-sd3_5-kohya-sd-scripts \
- -d \
- --entrypoint sleep \
- -v ./models:/models \
- -v ./output:/output \
- -v ./dataset:/dataset \
- -v ./dataset-config.toml:/dataset-config.toml \
- -v ./sample_prompts.txt:/sample_prompts.txt \
- --gpus all \
- --shm-size 8G \
- kopyl/train-sd3_5-kohya-sd-scripts infinity && \
-docker exec -it train-sd3_5-kohya-sd-scripts bash
