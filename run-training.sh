@@ -23,6 +23,7 @@ accelerate launch \
   --dataset_config dataset-config.toml \
   --output_dir output \
   --apply_t5_attn_mask \
+  --use_t5xxl_cache_only \
   --sample_prompts sample_prompts.txt \
   --output_name "${OUTPUT_MODEL_NAME:-finetuned-model}" \
   --save_every_n_epochs "${SAVE_EVERY_N_EPOCHS:-70}" \
